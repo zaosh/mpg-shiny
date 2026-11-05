@@ -1,0 +1,48 @@
+Car Fuel Economy Predictor
+========================================================
+author: Zaosh
+date: `r format(Sys.Date(), '%B %d, %Y')`
+autosize: true
+
+A simple Shiny app that predicts a car's miles per gallon.
+
+The Problem
+========================================================
+
+- Buying a car? Fuel economy matters, but spec sheets are confusing.
+- Question: **given weight, horsepower and transmission, how many mpg should I expect?**
+- Our app answers instantly, with an uncertainty range.
+
+The Model
+========================================================
+
+Linear regression on the built-in `mtcars` data (32 cars):
+
+```{r}
+fit <- lm(mpg ~ wt + hp + am, data = mtcars)
+round(coef(summary(fit)), 3)
+```
+
+R-squared: `r round(summary(fit)$r.squared, 2)`
+
+Example Prediction
+========================================================
+
+A 3,000 lb, 120 hp automatic car:
+
+```{r}
+predict(fit, data.frame(wt = 3, hp = 120, am = 0), interval = "prediction")
+```
+
+```{r, echo=FALSE, fig.height=4}
+plot(mtcars$wt, mtcars$mpg, pch = 19, col = "grey50", xlab = "Weight (1000 lbs)", ylab = "mpg")
+```
+
+Try It
+========================================================
+
+- Sliders for weight and horsepower, a radio button for transmission
+- Prediction, 95% interval and rating update instantly
+- Built-in "How to use this app" tab for new users
+- App: *paste your shinyapps.io link here*
+- Code (ui.R, server.R): *paste your GitHub link here*
