@@ -44,5 +44,5 @@ Try It
 - Sliders for weight and horsepower, a radio button for transmission
 - Prediction, 95% interval and rating update instantly
 - Built-in "How to use this app" tab for new users
-- App: *paste your shinyapps.io link here*
-- Code (ui.R, server.R): *paste your GitHub link here*
+- App: <https://zaosh.shinyapps.io/mpg-predictor/>
+- Code (ui.R, server.R): <https://github.com/zaosh/mpg-shiny>
